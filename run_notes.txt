@@ -1,0 +1,12 @@
+module load python/gnu/3.6.5
+module load spark/2.4.0
+
+PYSPARK_PYTHON=$(which python) pyspark
+
+spark-submit --driver-memory 8g --executor-memory 8g sampler.py
+
+spark-submit --driver-memory 8g --executor-memory 8g trainer.py
+
+spark-submit --driver-memory 8g --executor-memory 8g tester.py
+
+spark-submit --driver-memory 8g --executor-memory 8g log_extension.py
